@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.usage.tryLock2;
+package com.usage.reentrant.tryLockDemo2;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;

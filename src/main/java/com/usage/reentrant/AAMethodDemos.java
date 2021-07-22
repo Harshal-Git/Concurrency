@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.methodDemo;
+package com.usage.reentrant;
 
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -9,7 +9,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author Harshal-Git
  *
  */
-public class Demo1 {
+public class AAMethodDemos {
 
 	/**
 	 * @param args

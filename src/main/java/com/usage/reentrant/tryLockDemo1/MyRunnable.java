@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.usage.tryLock1;
+package com.usage.reentrant.tryLockDemo1;
 
 import java.util.concurrent.locks.ReentrantLock;
 

@@ -1,12 +1,11 @@
 /**
  * 
  */
-package com.usage.tryLock2;
+package com.usage.reentrant.tryLockDemo1;
 
 /**
  * @author Harshal-Git
  *
- *	-> 2 threads trying to ask for lock continuously until both finishes their respective execution.
  */
 public class Client {
 

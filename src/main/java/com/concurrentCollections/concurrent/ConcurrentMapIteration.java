@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.concurrentMap;
+package com.concurrentCollections.concurrent;
 
 import java.util.Iterator;
 import java.util.Map;

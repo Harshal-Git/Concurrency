@@ -1,21 +1,21 @@
 /**
  * 
  */
-package com.copyOnWriteAL;
+package com.concurrentCollections.COW;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * @author Harshal-Git
  *
- *	-> program to show case concurrent modification exception can be avoided with concurrent collections.
+ *	-> program to show case concurrent modification exception on an array list
  */
-public class SuccessDemo {
+public class FailureDemo {
 
-	// if we use copy on write array list: 
-	public static List<Integer> al = new CopyOnWriteArrayList<>();
+	// using normal collection; it will cause concurrent modification exception 
+	public static List<Integer> al = new ArrayList<>();
 	
 	/**
 	 * @param args
@@ -29,7 +29,7 @@ public class SuccessDemo {
 		al.add(40);
 		
 		// main thread starting child thread 
-		MyThread1 t1 = new MyThread1();
+		MyThread2 t1 = new MyThread2();
 		t1.start();
 		
 		// meanwhile main thread iterating collection
@@ -52,7 +52,7 @@ public class SuccessDemo {
 }
 
 // child thread performing modification to the collection
-class MyThread1 extends Thread {
+class MyThread2 extends Thread {
 	
 	@Override
 	public void run() {
@@ -64,7 +64,7 @@ class MyThread1 extends Thread {
 			System.out.println("Thread "+threadName+" got interrupted.");
 		}
 		System.out.println("Child thread "+threadName+" adding 99 to collection...");
-		SuccessDemo.al.add(99);
+		FailureDemo.al.add(99);
 	}
 	
 }
