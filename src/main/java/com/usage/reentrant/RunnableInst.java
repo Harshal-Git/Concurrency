@@ -7,15 +7,15 @@ package com.usage.reentrant;
  * @author Harshal-Git
  *
  */
-public class RunnableInst2 implements Runnable {
+public class RunnableInst implements Runnable {
 
-	private Display2 dispParam;
+	private Display dispParam;
 	private String nameParam;
 	
 	/**
 	 * parameterized constructor 
 	 */
-	public RunnableInst2(Display2 disp, String name) {
+	public RunnableInst(Display disp, String name) {
 		this.dispParam = disp;
 		this.nameParam = name;
 	}

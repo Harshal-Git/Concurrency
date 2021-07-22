@@ -10,7 +10,7 @@ import java.util.concurrent.locks.ReentrantLock;
  *
  *	-> Display object using Reentrant lock
  */
-public class Display2 {
+public class Display {
 
 	private ReentrantLock lock = new ReentrantLock();
 	
