@@ -39,6 +39,7 @@ public class WorkerRunnable implements Runnable {
 	@Override
 	public void run() {
 		boolean isDone = false;
+		System.out.println(getThreadName()+" started");
 		while(!isDone) {
 
 			// try first lock
@@ -46,17 +47,17 @@ public class WorkerRunnable implements Runnable {
 			if(hasLock) {
 
 				// if any thread is able to acquire lock first
-				System.out.println(getThreadName()+" has acquired first lock...will sleep now.");
+				System.out.println(getThreadName()+" acquired first lock...");
 
 				// sleep after first lock & acquire second lock
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(2000);
 				} catch (InterruptedException e) {
 					System.out.println(getThreadName()+" interrupted during sleep.");	
 				} finally {
 					// try to acquire second lock
-					System.out.println(getThreadName()+" acquiring second lock...will sleep now.");
 					getLockObj().lock();
+					System.out.println(getThreadName()+" acquired second lock...");
 				}
 
 				// check current lock count
@@ -68,7 +69,7 @@ public class WorkerRunnable implements Runnable {
 				} catch (InterruptedException e) {
 					System.out.println(getThreadName()+" interrupted during sleep.");	
 				} finally {
-					System.out.println(getThreadName()+" will release second lock now.");
+					System.out.println(getThreadName()+" will release second lock.");
 					getLockObj().unlock();	
 				}
 
@@ -76,14 +77,14 @@ public class WorkerRunnable implements Runnable {
 				//System.out.println("Current lock hold count by "+getThreadName()+" = "+getLockObj().getHoldCount());
 
 				// release lock (in reverse order it's obtained)
-				System.out.println(getThreadName()+" will release first lock now.");
+				System.out.println(getThreadName()+" will release first lock.");
 				getLockObj().unlock();
 				//System.out.println("Current lock hold count by "+getThreadName()+" = "+getLockObj().getHoldCount());
-				System.out.println(getThreadName()+" has been finished.");
+				System.out.println(getThreadName()+" is finished.");
 				isDone = true;
 			} else {
 				// if a thread is not successful to acquire a lock: it will do something else
-				System.out.println(getThreadName()+" will try to acquire first lock again...");
+				System.out.println("--> "+getThreadName()+" will try later...");
 				try {
 					Thread.sleep(1500);
 				} catch (InterruptedException e) {

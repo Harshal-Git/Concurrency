@@ -24,11 +24,11 @@ public class MyRunnable implements Runnable {
 		String threadName = Thread.currentThread().getName();
 
 		// keep trying for both threads to acquire lock
-		do {
+		while(true){
 			try {
 				// try to acquire lock every 5 seconds
 				if(lock.tryLock(5000, TimeUnit.MILLISECONDS)) {
-					System.out.println("\n"+threadName+" acquired the lock and performing action...");
+					System.out.println(threadName+" acquired the lock and performing action...");
 					try {
 						System.out.println(threadName+" sleeping...");
 						Thread.sleep(12000);
@@ -37,9 +37,8 @@ public class MyRunnable implements Runnable {
 					}
 					// release lock
 					lock.unlock();
-					System.out.println("\n"+threadName+" released lock.");
-					
-					// once thread releases lock; then break the do-while loop
+					System.out.println(threadName+" released lock.");
+					// once thread releases lock; then break the do-while loop for current thread
 					break;	
 				} else {
 					// if thread could not acquired lock : perform alternate operations
@@ -48,6 +47,6 @@ public class MyRunnable implements Runnable {
 			} catch (InterruptedException e) {
 				System.out.println(threadName+" was interrupted while acquiring lock.");
 			}
-		} while(true);
+		}
 	}
 }
