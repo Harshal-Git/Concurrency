@@ -38,7 +38,7 @@ public class ReaderRunnable implements Runnable {
 		while(true) {
 			// just to pause for a while before attempting to read again
 			try {
-				Thread.sleep(700);			
+				Thread.sleep(600);			
 			} catch (InterruptedException e) {
 				System.out.println("Reader thread sleep() interrupted.");
 			}
